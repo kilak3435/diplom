@@ -8,18 +8,18 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="flex items-center gap-2 text-brand-600 hover:text-brand-500 transition-colors">
             <Dice5 size={28} />
-            <span className="font-bold text-xl tracking-tight text-slate-900">BoardGames</span>
+            <span className="font-bold text-xl tracking-tight text-slate-900">настолки</span>
           </Link>
           
           <div className="flex gap-6">
             <Link to="/" className="flex items-center gap-2 text-slate-600 hover:text-brand-500 font-medium transition-colors">
-              <Home size={18} /> <span>Главная</span>
+               <span>домой</span>
             </Link>
             <Link to="/catalog" className="flex items-center gap-2 text-slate-600 hover:text-brand-500 font-medium transition-colors">
-              <List size={18} /> <span>Каталог</span>
+               <span>игры</span>
             </Link>
             <Link to="/admin" className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-100 text-slate-700 hover:bg-brand-50 hover:text-brand-600 font-medium transition-all">
-              <Settings size={18} /> <span>Админ</span>
+               <span>админ</span>
             </Link>
           </div>
         </div>

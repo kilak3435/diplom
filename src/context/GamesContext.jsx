@@ -3,50 +3,50 @@ import { createContext, useContext, useState, useEffect } from 'react';
 const GamesContext = createContext();
 
 export function GamesProvider({ children }) {
-  const [games, setGames] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [igr, setIgr] = useState([]);
+  const [zagr, setZagr] = useState(true);
 
   useEffect(() => {
-    const loadGames = async () => {
+    const l = async () => {
       try {
-        const localGames = localStorage.getItem('boardGames');
-        if (localGames) {
-          setGames(JSON.parse(localGames));
+        const d = localStorage.getItem('boardGames');
+        if (d) {
+          setIgr(JSON.parse(d));
         } else {
-          const response = await fetch('/games.json');
-          const data = await response.json();
-          setGames(data);
-          localStorage.setItem('boardGames', JSON.stringify(data));
+          const r = await fetch('/games.json');
+          const js = await r.json();
+          setIgr(js);
+          localStorage.setItem('boardGames', JSON.stringify(js));
         }
-      } catch (error) {
-        console.error('Failed to load games:', error);
+      } catch (err) {
+        console.error(err);
       } finally {
-        setLoading(false);
+        setZagr(false);
       }
     };
-    loadGames();
+    l();
   }, []);
 
-  const saveGames = (newGames) => {
-    setGames(newGames);
-    localStorage.setItem('boardGames', JSON.stringify(newGames));
+  const save = (arr) => {
+    setIgr(arr);
+    localStorage.setItem('boardGames', JSON.stringify(arr));
   };
 
-  const addGame = (game) => {
-    const newGame = { ...game, id: Date.now() }; // Simple ID generation
-    saveGames([...games, newGame]);
+  const addGame = (g) => {
+    const nov = { ...g, id: Date.now() };
+    save([...igr, nov]);
   };
 
-  const updateGame = (updatedGame) => {
-    saveGames(games.map(g => g.id === updatedGame.id ? updatedGame : g));
+  const updateGame = (upd) => {
+    save(igr.map(g => g.id === upd.id ? upd : g));
   };
 
   const deleteGame = (id) => {
-    saveGames(games.filter(g => g.id !== id));
+    save(igr.filter(g => g.id !== id));
   };
 
   return (
-    <GamesContext.Provider value={{ games, loading, addGame, updateGame, deleteGame }}>
+    <GamesContext.Provider value={{ games: igr, loading: zagr, addGame, updateGame, deleteGame }}>
       {children}
     </GamesContext.Provider>
   );
