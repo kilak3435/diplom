@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import { Home, List, Settings, Dice5 } from 'lucide-react';
+import { Home, List, Settings, Dice5}from 'lucide-react';
 
-export default function Navbar() {
+export default function Navbar(){
   return (
     <nav className="glass-panel sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

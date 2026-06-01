@@ -1,17 +1,17 @@
-import { useState, useMemo } from 'react';
+import { useState,useMemo } from 'react';
 import { useGames } from '../context/GamesContext';
 import GameCard from '../components/GameCard';
-import { Search } from 'lucide-react';
+import{Search } from 'lucide-react';
 
-export default function Catalog() {
-  const { games, loading } = useGames();
-  const [poisk, setPoisk] = useState('');
+export default function Catalog(){
+  const { games,loading }=useGames();
+  const [poisk,setPoisk]=useState('');
 
-  const filtr = useMemo(() => {
-    return games.filter(g => g.name.toLowerCase().includes(poisk.toLowerCase()));
-  }, [games, poisk]);
+  const filtr = useMemo(()=>{
+    return games.filter(g=>g.name.toLowerCase().includes(poisk.toLowerCase()));
+  },[games, poisk]);
 
-  if (loading) {
+  if (loading){
     return <div className="text-center py-20 text-slate-500">подождите...</div>;
   }
 
@@ -27,14 +27,14 @@ export default function Catalog() {
             type="text" 
             placeholder="искать игру..." 
             value={poisk} 
-            onChange={e => setPoisk(e.target.value)}
+            onChange={e=>setPoisk(e.target.value)}
             className="w-full pl-12 pr-4 py-4 rounded-2xl border-2 border-slate-100 bg-white focus:outline-none focus:border-brand-500 focus:ring-4 focus:ring-brand-500/10 transition-all text-lg shadow-sm"
           />
         </div>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-        {filtr.slice(0, 100).map(g => ( 
+        {filtr.slice(0, 100).map(g=>( 
           <GameCard key={g.id} game={g} />
         ))}
       </div>

@@ -1,14 +1,14 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link}from 'react-router-dom';
 import { useGames } from '../context/GamesContext';
-import { ArrowLeft, Users, Tag, Calendar, Target, BookOpen, Star } from 'lucide-react';
+import { ArrowLeft, Users,Tag, Calendar, Target, BookOpen, Star}from 'lucide-react';
 
-export default function GameDetails() {
-  const { id } = useParams();
-  const { games, loading } = useGames();
+export default function GameDetails(){
+  const { id }=useParams();
+  const { games,loading }=useGames();
   
   if (loading) return <div className="text-center py-20">подождите...</div>;
   
-  const igra = games.find(x => String(x.id) === id);
+  const igra=games.find(x=>String(x.id) === id);
   if (!igra) return <div className="text-center py-20 text-slate-500">нету игры</div>;
 
   return (

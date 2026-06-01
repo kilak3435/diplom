@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
-import { Users, Tag } from 'lucide-react';
+import{Link } from 'react-router-dom';
+import{Users,Tag } from 'lucide-react';
 
-export default function GameCard({ game }) {
+export default function GameCard({ game }){
   return (
     <Link to={`/game/${game.id}`} className="group block h-full">
       <div className="bg-white rounded-3xl p-6 border border-slate-100 shadow-sm hover:shadow-xl hover:border-brand-100 transition-all duration-300 h-full flex flex-col hover:-translate-y-1">

@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import { Link}from 'react-router-dom';
+import{ArrowRight}from 'lucide-react';
 
-export default function Home() {
+export default function Home(){
   return (
     <div className="flex flex-col items-center justify-center min-h-[80vh] text-center px-4">
       <div className="max-w-3xl space-y-8">
