@@ -1,11 +1,11 @@
-import { Routes,Route } from 'react-router-dom';
+import { Routes,Route}from 'react-router-dom';
 import Home from './pages/Home';
 import Catalog from './pages/Catalog';
 import GameDetails from './pages/GameDetails';
 import Admin from './pages/Admin';
 import Navbar from './components/Navbar';
 
-export default function App() {
+export default function App(){
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />

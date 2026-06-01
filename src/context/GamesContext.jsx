@@ -1,9 +1,9 @@
-import { createContext, useContext,useState, useEffect } from 'react';
+import{createContext, useContext,useState,useEffect } from 'react';
 
-const GamesContext = createContext();
+const GamesContext=createContext();
 
 export function GamesProvider({ children }){
-  const [igr, setIgr]=useState([]);
+  const [igr,setIgr]=useState([]);
   const [zagr, setZagr]=useState(true);
 
   useEffect(()=>{
@@ -14,11 +14,11 @@ export function GamesProvider({ children }){
           setIgr(JSON.parse(d));
        }else {
           const r = await fetch('/games.json');
-          const js = await r.json();
+          const js=await r.json();
           setIgr(js);
           localStorage.setItem('boardGames', JSON.stringify(js));
         }
-     }catch (err) {
+     }catch (err){
         console.error(err);
       } finally {
         setZagr(false);
@@ -32,17 +32,17 @@ export function GamesProvider({ children }){
     localStorage.setItem('boardGames',JSON.stringify(arr));
   };
 
-  const addGame = (g) => {
+  const addGame = (g)=>{
     const nov ={...g,id:Date.now() };
     save([...igr,nov]);
   };
 
   const updateGame=(upd)=>{
-    save(igr.map(g=>g.id === upd.id ? upd : g));
+    save(igr.map(g=>g.id === upd.id ? upd :g));
   };
 
   const deleteGame = (id)=>{
-    save(igr.filter(g => g.id !== id));
+    save(igr.filter(g=>g.id !== id));
   };
 
   return (

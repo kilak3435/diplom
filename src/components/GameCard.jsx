@@ -1,5 +1,5 @@
-import{Link } from 'react-router-dom';
-import{Users,Tag } from 'lucide-react';
+import{Link}from 'react-router-dom';
+import{Users,Tag}from 'lucide-react';
 
 export default function GameCard({ game }){
   return (

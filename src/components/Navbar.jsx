@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import { Home, List, Settings, Dice5}from 'lucide-react';
+import{Link}from 'react-router-dom';
+import { Home, List,Settings,Dice5}from 'lucide-react';
 
 export default function Navbar(){
   return (

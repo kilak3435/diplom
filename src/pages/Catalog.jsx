@@ -1,5 +1,5 @@
-import { useState,useMemo } from 'react';
-import { useGames } from '../context/GamesContext';
+import{useState,useMemo } from 'react';
+import{useGames}from '../context/GamesContext';
 import GameCard from '../components/GameCard';
 import{Search } from 'lucide-react';
 
@@ -9,7 +9,7 @@ export default function Catalog(){
 
   const filtr = useMemo(()=>{
     return games.filter(g=>g.name.toLowerCase().includes(poisk.toLowerCase()));
-  },[games, poisk]);
+  },[games,poisk]);
 
   if (loading){
     return <div className="text-center py-20 text-slate-500">подождите...</div>;
@@ -34,7 +34,7 @@ export default function Catalog(){
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-        {filtr.slice(0, 100).map(g=>( 
+        {filtr.slice(0,100).map(g=>( 
           <GameCard key={g.id} game={g} />
         ))}
       </div>

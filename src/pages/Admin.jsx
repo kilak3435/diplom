@@ -1,19 +1,19 @@
 import{useState } from 'react';
-import { useGames}from '../context/GamesContext';
-import { Edit2, Trash2, Plus, X}from 'lucide-react';
+import{useGames}from '../context/GamesContext';
+import{Edit2,Trash2, Plus, X}from 'lucide-react';
 
 export default function Admin() {
-  const { games,loading,addGame,updateGame, deleteGame}= useGames();
+  const{games,loading,addGame,updateGame,deleteGame}= useGames();
   const [okno,setOkno]=useState(false);
-  const [dannie,setDannie] = useState({ name: '', genre:'', playersMin:2,playersMax:4, difficulty:'Средняя',year:2024, goal:'',rules: '' });
-  const [redID, setRedID]=useState(null);
+  const [dannie,setDannie]=useState({ name:'', genre:'',playersMin:2,playersMax:4,difficulty:'Средняя',year:2024,goal:'',rules:'' });
+  const [redID,setRedID]=useState(null);
 
-  const otkritOkno=(g = null) => {
+  const otkritOkno=(g = null)=>{
     if (g){
       setDannie(g);
       setRedID(g.id);
    }else {
-      setDannie({ name: '', genre:'', playersMin: 2,playersMax: 4,difficulty:'Средняя', year: 2024,goal:'',rules: '' });
+      setDannie({ name: '', genre:'',playersMin:2,playersMax:4,difficulty:'Средняя',year:2024,goal:'',rules:'' });
       setRedID(null);
     }
     setOkno(true);
@@ -21,9 +21,9 @@ export default function Admin() {
 
   const sabmit=(e)=>{
     e.preventDefault();
-    if (redID) {
+    if (redID){
       updateGame({ ...dannie,id: redID });
-    } else {
+   }else {
       addGame(dannie);
     }
     setOkno(false);
@@ -51,7 +51,7 @@ export default function Admin() {
             </tr>
           </thead>
           <tbody>
-            {games.map(g => (
+            {games.map(g=>(
               <tr key={g.id} className="border-b border-slate-50 hover:bg-slate-50/50 transition-colors">
                 <td className="py-4 px-6 font-medium text-slate-900">{g.name}</td>
                 <td className="py-4 px-6 text-slate-600">{g.genre}</td>
@@ -75,25 +75,25 @@ export default function Admin() {
             <form onSubmit={sabmit} className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-1">название</label>
-                <input required type="text" value={dannie.name} onChange={e=>setDannie({...dannie, name: e.target.value})} className="w-full px-4 py-2 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all" />
+                <input required type="text" value={dannie.name} onChange={e=>setDannie({...dannie, name:e.target.value})} className="w-full px-4 py-2 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-1">жанр</label>
-                <input required type="text" value={dannie.genre} onChange={e=>setDannie({...dannie, genre:e.target.value})} className="w-full px-4 py-2 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all" />
+                <input required type="text" value={dannie.genre} onChange={e=>setDannie({...dannie,genre:e.target.value})} className="w-full px-4 py-2 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all" />
               </div>
               <div className="flex gap-4">
                 <div className="flex-1">
                   <label className="block text-sm font-medium text-slate-700 mb-1">мин игр.</label>
-                  <input required type="number" value={dannie.playersMin} onChange={e=>setDannie({...dannie, playersMin: parseInt(e.target.value)})} className="w-full px-4 py-2 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500" />
+                  <input required type="number" value={dannie.playersMin} onChange={e=>setDannie({...dannie, playersMin:parseInt(e.target.value)})} className="w-full px-4 py-2 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500" />
                 </div>
                 <div className="flex-1">
                   <label className="block text-sm font-medium text-slate-700 mb-1">макс игр.</label>
-                  <input required type="number" value={dannie.playersMax} onChange={e=>setDannie({...dannie, playersMax: parseInt(e.target.value)})} className="w-full px-4 py-2 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500" />
+                  <input required type="number" value={dannie.playersMax} onChange={e=>setDannie({...dannie, playersMax:parseInt(e.target.value)})} className="w-full px-4 py-2 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500" />
                 </div>
               </div>
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-1">правила</label>
-                <textarea required value={dannie.rules} onChange={e => setDannie({...dannie, rules:e.target.value})} className="w-full px-4 py-2 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500" rows="3"></textarea>
+                <textarea required value={dannie.rules} onChange={e=>setDannie({...dannie, rules:e.target.value})} className="w-full px-4 py-2 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500" rows="3"></textarea>
               </div>
               <button type="submit" className="w-full bg-brand-600 hover:bg-brand-700 text-white font-medium py-3 rounded-xl mt-4">
                 готово
