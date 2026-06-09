@@ -3,7 +3,9 @@ import Home from './pages/Home';
 import Catalog from './pages/Catalog';
 import GameDetails from './pages/GameDetails';
 import Admin from './pages/Admin';
+import Login from './pages/Login';
 import Navbar from './components/Navbar';
+import ProtectedRoute from './components/ProtectedRoute';
 
 export default function App(){
   return (
@@ -14,7 +16,12 @@ export default function App(){
           <Route path='/' element={<Home />} />
           <Route path='/catalog' element={<Catalog />} />
           <Route path='/game/:id' element={<GameDetails />} />
-          <Route path='/admin' element={<Admin />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/admin' element={
+            <ProtectedRoute requireAdmin={true}>
+              <Admin />
+            </ProtectedRoute>
+         }/>
         </Routes>
       </main>
       <footer className="bg-slate-900 text-slate-400 py-6 text-center text-sm">

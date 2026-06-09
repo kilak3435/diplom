@@ -1,10 +1,10 @@
-import{createContext, useContext,useState,useEffect } from 'react';
+import{createContext,useContext,useState,useEffect}from 'react';
 
 const GamesContext=createContext();
 
 export function GamesProvider({ children }){
   const [igr,setIgr]=useState([]);
-  const [zagr, setZagr]=useState(true);
+  const [zagr,setZagr]=useState(true);
 
   useEffect(()=>{
     const l=async ()=>{
@@ -20,7 +20,7 @@ export function GamesProvider({ children }){
         }
      }catch (err){
         console.error(err);
-      } finally {
+     }finally {
         setZagr(false);
       }
     };
@@ -32,7 +32,7 @@ export function GamesProvider({ children }){
     localStorage.setItem('boardGames',JSON.stringify(arr));
   };
 
-  const addGame = (g)=>{
+  const addGame=(g)=>{
     const nov ={...g,id:Date.now() };
     save([...igr,nov]);
   };
@@ -46,7 +46,7 @@ export function GamesProvider({ children }){
   };
 
   return (
-    <GamesContext.Provider value={{ games: igr,loading:zagr,addGame, updateGame,deleteGame }}>
+    <GamesContext.Provider value={{ games: igr,loading:zagr,addGame,updateGame,deleteGame }}>
       {children}
     </GamesContext.Provider>
   );

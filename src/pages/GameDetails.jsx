@@ -1,10 +1,10 @@
-import { useParams, Link}from 'react-router-dom';
-import { useGames } from '../context/GamesContext';
-import { ArrowLeft, Users,Tag,Calendar,Target, BookOpen,Star}from 'lucide-react';
+import{useParams,Link}from 'react-router-dom';
+import{useGames}from '../context/GamesContext';
+import { ArrowLeft, Users,Tag,Calendar,Target,BookOpen,Star}from 'lucide-react';
 
 export default function GameDetails(){
   const{id }=useParams();
-  const { games,loading }=useGames();
+  const{games,loading }=useGames();
   
   if (loading) return <div className="text-center py-20">подождите...</div>;
   

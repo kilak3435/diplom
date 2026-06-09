@@ -1,4 +1,4 @@
-import{useState,useMemo } from 'react';
+import{useState,useMemo}from 'react';
 import{useGames}from '../context/GamesContext';
 import GameCard from '../components/GameCard';
 import{Search } from 'lucide-react';

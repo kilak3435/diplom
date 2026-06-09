@@ -1,14 +1,14 @@
-import{useState } from 'react';
+import{useState}from 'react';
 import{useGames}from '../context/GamesContext';
-import{Edit2,Trash2, Plus, X}from 'lucide-react';
+import{Edit2,Trash2, Plus,X}from 'lucide-react';
 
-export default function Admin() {
+export default function Admin(){
   const{games,loading,addGame,updateGame,deleteGame}= useGames();
   const [okno,setOkno]=useState(false);
   const [dannie,setDannie]=useState({ name:'', genre:'',playersMin:2,playersMax:4,difficulty:'Средняя',year:2024,goal:'',rules:'' });
   const [redID,setRedID]=useState(null);
 
-  const otkritOkno=(g = null)=>{
+  const otkritOkno=(g=null)=>{
     if (g){
       setDannie(g);
       setRedID(g.id);
@@ -22,7 +22,7 @@ export default function Admin() {
   const sabmit=(e)=>{
     e.preventDefault();
     if (redID){
-      updateGame({ ...dannie,id: redID });
+      updateGame({ ...dannie,id:redID });
    }else {
       addGame(dannie);
     }
@@ -88,12 +88,12 @@ export default function Admin() {
                 </div>
                 <div className="flex-1">
                   <label className="block text-sm font-medium text-slate-700 mb-1">макс игр.</label>
-                  <input required type="number" value={dannie.playersMax} onChange={e=>setDannie({...dannie, playersMax:parseInt(e.target.value)})} className="w-full px-4 py-2 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500" />
+                  <input required type="number" value={dannie.playersMax} onChange={e=>setDannie({...dannie,playersMax:parseInt(e.target.value)})} className="w-full px-4 py-2 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500" />
                 </div>
               </div>
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-1">правила</label>
-                <textarea required value={dannie.rules} onChange={e=>setDannie({...dannie, rules:e.target.value})} className="w-full px-4 py-2 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500" rows="3"></textarea>
+                <textarea required value={dannie.rules} onChange={e=>setDannie({...dannie,rules:e.target.value})} className="w-full px-4 py-2 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500" rows="3"></textarea>
               </div>
               <button type="submit" className="w-full bg-brand-600 hover:bg-brand-700 text-white font-medium py-3 rounded-xl mt-4">
                 готово
